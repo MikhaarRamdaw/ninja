@@ -1,0 +1,62 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environments
+.venv/
+env/
+venv/
+ENV/
+
+# Python egg files
+*.egg
+*.egg-info/
+dist/
+build/
+*.manifest
+*.spec
+
+# PyInstaller
+*.log
+*.pid
+
+# Environments and secrets
+.env
+*.env
+
+# Jupyter notebooks checkpoints (if used)
+.ipynb_checkpoints/
+
+# VSCode settings (optional)
+.vscode/
+
+# macOS
+.DS_Store
+
+# System files
+Thumbs.db
+ehthumbs.db
+
+# Docker
+*.tar
+*.img
+*.container
+*.pid
+
+# Testing
+htmlcov/
+coverage.xml
+.cache/
+.pytest_cache/
+nosetests.xml
+test-results/
+
+# PyTorch / Transformers
+*.pt
+*.ckpt
+*.h5
+*.onnx
+
+# My additions
+logs/
