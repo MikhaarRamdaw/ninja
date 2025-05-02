@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+requests
+aiohttp
+python-dotenv
+pydantic
+sqlalchemy
+neo4j
+torch
+transformers
+black
+isort
+pytest
