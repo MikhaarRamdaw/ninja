@@ -2,6 +2,7 @@
 
 import socket
 import whois
+from .ports import scan_ports
 
 
 def get_ip(domain: str) -> str:
@@ -11,12 +12,8 @@ def get_ip(domain: str) -> str:
         return "Unable to resolve domain."
 
 
-def get_dummy_open_ports() -> list:
-    return [22, 80, 443]  # SSH, HTTP, HTTPS (dummy for now)
-
-
 def get_dummy_tech_stack() -> list:
-    return ["Apache", "PHP", "MySQL"]  # placeholder
+    return ["Apache", "PHP", "MySQL"]  # Placeholder for now
 
 
 def get_whois_info(domain: str) -> str:
@@ -29,12 +26,17 @@ def get_whois_info(domain: str) -> str:
 
 def run_recon(domain: str):
     print(f"\n🔍 Starting Recon on: {domain}\n")
-    
+
     ip = get_ip(domain)
     print(f"🌐 IP Address: {ip}")
 
-    print(f"🛠 Dummy Open Ports: {get_dummy_open_ports()}")
-    print(f"🧱 Dummy Technology Stack: {get_dummy_tech_stack()}")
+    if ip != "Unable to resolve domain.":
+        open_ports = scan_ports(ip)
+        print(f"\n🚪 Open Ports Found: {open_ports}")
+    else:
+        open_ports = []
+
+    print(f"\n🧱 Dummy Technology Stack: {get_dummy_tech_stack()}")
 
     print("\n📄 WHOIS Info:")
     print(get_whois_info(domain))
