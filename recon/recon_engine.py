@@ -4,6 +4,8 @@ import socket
 import whois
 from .ports import scan_ports
 from .fingerprint import get_tech_stack
+from .subdomains import enumerate_subdomains
+
 
 
 def get_ip(domain: str) -> str:
@@ -39,3 +41,7 @@ def run_recon(domain: str):
 
     print("\n📄 WHOIS Info:")
     print(get_whois_info(domain))
+
+        print("\n🔎 Subdomains Found:")
+    for subdomain, ip in enumerate_subdomains(domain):
+        print(f"   - {subdomain} → {ip}")
