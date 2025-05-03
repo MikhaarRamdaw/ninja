@@ -42,6 +42,6 @@ def run_recon(domain: str):
     print("\n📄 WHOIS Info:")
     print(get_whois_info(domain))
 
-        print("\n🔎 Subdomains Found:")
+    print("\n🔎 Subdomains Found:")
     for subdomain, ip in enumerate_subdomains(domain):
         print(f"   - {subdomain} → {ip}")
