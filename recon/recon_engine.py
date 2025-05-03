@@ -3,6 +3,7 @@
 import socket
 import whois
 from .ports import scan_ports
+from .fingerprint import get_tech_stack
 
 
 def get_ip(domain: str) -> str:
@@ -10,10 +11,6 @@ def get_ip(domain: str) -> str:
         return socket.gethostbyname(domain)
     except socket.gaierror:
         return "Unable to resolve domain."
-
-
-def get_dummy_tech_stack() -> list:
-    return ["Apache", "PHP", "MySQL"]  # Placeholder for now
 
 
 def get_whois_info(domain: str) -> str:
@@ -26,7 +23,7 @@ def get_whois_info(domain: str) -> str:
 
 def run_recon(domain: str):
     print(f"\n🔍 Starting Recon on: {domain}\n")
-
+    
     ip = get_ip(domain)
     print(f"🌐 IP Address: {ip}")
 
@@ -36,7 +33,9 @@ def run_recon(domain: str):
     else:
         open_ports = []
 
-    print(f"\n🧱 Dummy Technology Stack: {get_dummy_tech_stack()}")
+    print(f"\n🧱 Technology Stack Fingerprint:")
+    for tech in get_tech_stack(domain):
+        print(f"   - {tech}")
 
     print("\n📄 WHOIS Info:")
     print(get_whois_info(domain))
