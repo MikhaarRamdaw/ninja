@@ -42,6 +42,12 @@ def main():
     parser_range.add_argument("cidr", help="CIDR (e.g., 192.168.1.0/24)")
     parser_range.add_argument("--port", type=int, default=443, help="TCP port to check (default: 443)")
 
+    # Smart fallback: allow `python cli.py google.com`
+    import sys
+    if len(sys.argv) == 2 and not sys.argv[1].startswith('-'):
+        run_recon(sys.argv[1])
+        return
+
     args = parser.parse_args()
 
     if args.command == "recon":
